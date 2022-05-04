@@ -1,8 +1,10 @@
-package br.com.posarquiteturapuc2022.domain;
+package br.com.posarquiteturapuc2022.domain.enums;
 
 public enum TipoCobertura {
-	NACIONAL(1, "Nacional"), 
-	INTERNACIONAL(2, "Internacional");
+	INDIVIDUAL_NACIONAL(1, "Individual Nacional"), 
+	EMPRESARIAL_NACIONAL(1, "Empresarial Nacional"), 
+	INDIVIDUAL_INTERNACIONAL(2, "Individual Internacional"),
+	EMPRESARIAL_INTERNACIONAL(2, "Empresarial Internacional");
 	
 	private Integer codigo;
 	private String descricao;
@@ -31,7 +33,7 @@ public enum TipoCobertura {
 			}
 		}
 		
-		throw new IllegalArgumentException("Criticidade inválido");
+		throw new IllegalArgumentException("Tipo de Cobertura inválido");
 	}
 
 }

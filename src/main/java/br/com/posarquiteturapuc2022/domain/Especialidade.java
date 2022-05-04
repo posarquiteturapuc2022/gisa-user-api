@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-import br.com.posarquiteturapuc2022.domain.enums.TipoPrestador;
-
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.EqualsAndHashCode.Include;
 
@@ -13,15 +11,14 @@ import static lombok.EqualsAndHashCode.Include;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "TB_PRESTADOR")
-public class Prestador {
+@Entity(name = "TB_ESPECIALIDADE")
+public class Especialidade {
 	
     @Include
 	@Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private Usuario usuario;
-    private TipoPrestador tipoPrestador; 
-    private Especialidade especialidade; 
-    private boolean situacao;
+    private Consulta consulta;
+    private Cirurgia cirurgia;
+    
 }

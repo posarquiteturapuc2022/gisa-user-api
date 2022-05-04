@@ -1,16 +1,15 @@
-package br.com.posarquiteturapuc2022.domain;
+package br.com.posarquiteturapuc2022.domain.enums;
 
-public enum TipoPrestador {
-	MEDICO(1, "Médico"), 
+public enum TipoConveniado {
 	CONSULTORIO(2, "Consultório"), 
 	LABORATORIO(3, "Laboratório"), 
-	CLINICA(4, "Clnica"), 
-	HOSPITAL(5, "´Hospital");
+	CLINICA(4, "Clínica"), 
+	HOSPITAL(5, "Hospital");
 	
 	private Integer codigo;
 	private String descricao;
 	
-	private TipoPrestador(Integer codigo, String descricao) {
+	private TipoConveniado(Integer codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
@@ -23,18 +22,18 @@ public enum TipoPrestador {
 		return descricao;
 	}
 	
-	public static TipoPrestador toEnum(Integer cod) {
+	public static TipoConveniado toEnum(Integer cod) {
 		if(cod == null) {
 			return null;
 		}
 		
-		for(TipoPrestador x : TipoPrestador.values()) {
+		for(TipoConveniado x : TipoConveniado.values()) {
 			if(cod.equals(x.getCodigo())) {
 				return x;
 			}
 		}
 		
-		throw new IllegalArgumentException("Criticidade inválido");
+		throw new IllegalArgumentException("Tipo Conveniado inválido");
 	}
 
 }

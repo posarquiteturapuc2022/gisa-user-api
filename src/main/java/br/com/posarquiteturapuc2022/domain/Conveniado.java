@@ -13,8 +13,8 @@ import static lombok.EqualsAndHashCode.Include;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "TB_PRESTADOR")
-public class Prestador {
+@Entity(name = "TB_CONVENIADO")
+public class Conveniado {
 	
     @Include
 	@Id
