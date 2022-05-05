@@ -18,7 +18,13 @@ public class Especialidade {
 	@Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    
+	@ManyToOne
+	@JoinColumn(name = "consulta_id")
     private Consulta consulta;
+	
+	@ManyToOne
+	@JoinColumn(name = "cirurgia_id")
     private Cirurgia cirurgia;
     
 }

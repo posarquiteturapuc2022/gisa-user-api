@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.posarquiteturapuc2022.domain.enums.Perfil;
 import br.com.posarquiteturapuc2022.domain.enums.TipoCategoria;
@@ -36,7 +38,11 @@ public class Associado {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
     private Usuario usuario;
+	
     private Integer idade;
     private Integer codigoPlano;
     private BigDecimal valorPlanoMensal;

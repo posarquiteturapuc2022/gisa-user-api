@@ -20,8 +20,15 @@ public class Prestador {
 	@Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    
     private TipoPrestador tipoPrestador; 
+    
+	@ManyToOne
+	@JoinColumn(name = "especialidade_id")
     private Especialidade especialidade; 
     private boolean situacao;
 }
