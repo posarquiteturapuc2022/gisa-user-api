@@ -3,6 +3,7 @@ package br.com.posarquiteturapuc2022.domain;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,7 +39,7 @@ public class Associado {
     private Usuario usuario;
     private Integer idade;
     private Integer codigoPlano;
-    private BigDecimal valorPlano;
+    private BigDecimal valorPlanoMensal;
 	private TipoCobertura tipoCobertura;
 	private TipoCategoria tipoCategoria;
     private boolean odontologico;
@@ -54,5 +55,18 @@ public class Associado {
 
 	public void addPerfil(Perfil perfil) {
 		this.perfis.add(perfil.getCodigo());
+	}
+
+	public void planoOdontologico(boolean planoOdontologico, BigDecimal valorPlano) {
+		if (planoOdontologico) {
+			setValorPlanoMensal(valorPlano);
+	        NumberFormat df2 = NumberFormat.getInstance();
+	        BigDecimal percent15 = new BigDecimal ("0.15");
+	        System.out.println("Valor Fixo do Plano: " + getValorPlanoMensal());
+	        System.out.println ("15% de Valor do Plano Mensal: " + df2.format(getValorPlanoMensal().multiply(percent15)).replace(",","."));
+	        BigDecimal vpm = new BigDecimal(String.valueOf(df2.format(getValorPlanoMensal().multiply(percent15)).replace(",",".")));
+			setValorPlanoMensal(valorPlano.add(vpm));
+			System.out.println("setValorPlanoMensal(): " + valorPlano.add(vpm));
+		}
 	}
 }
