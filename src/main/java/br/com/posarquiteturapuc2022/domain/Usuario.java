@@ -8,6 +8,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.EqualsAndHashCode.Include;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter @Setter
 @AllArgsConstructor
@@ -16,8 +19,9 @@ import lombok.Setter;
 @Entity(name = "TB_USUARIO")
 public class Usuario {
 
+    @Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String nome;
     private String email;
