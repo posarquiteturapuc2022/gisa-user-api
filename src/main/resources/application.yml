@@ -3,6 +3,19 @@ server:
 spring:
   application:
     name: gisa-user-api
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+  session:
+    store-type: none
+  flyway:
+    baselineOnMigrate: true
+
 eureka:
   client:
     service-url:

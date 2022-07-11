@@ -1,30 +1,54 @@
 package br.com.posarquiteturapuc2022.domain;
 
 
-import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.UUID;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import br.com.posarquiteturapuc2022.utils.EntityAbstract;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.EqualsAndHashCode.Include;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "TB_USUARIO")
-public class Usuario {
-
-    @Include
+@Entity
+@Table(schema = "gisauserapidb")
+@AttributeOverride(name = "id", column = @Column(name = "id_usuario"))
+public class Usuario extends EntityAbstract implements Serializable, Comparable<Usuario>{
+	
+	private static final long serialVersionUID = 5251545892116372470L;
+	
+	@Include
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private UUID id;
     private String nome;
+    private String cpf;
+    private String cnpj;
     private String email;
     private String password;
-
+    
+	protected Usuario(UUID id, String cpf) {
+		super();
+		this.id = id;
+		this.cpf = cpf;
+	}
+    
+	@Override
+	public int compareTo(Usuario o) {
+		return  o.getCreatedAt().compareTo(getCreatedAt());
+	}
 }

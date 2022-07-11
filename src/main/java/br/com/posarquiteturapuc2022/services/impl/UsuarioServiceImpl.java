@@ -1,6 +1,7 @@
 package br.com.posarquiteturapuc2022.services.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,22 @@ public class UsuarioServiceImpl implements UsuarioService{
 	private final UsuarioRepository usuarioRepository;
 	
 	@Override
-	public Usuario findById(Long id) {
-		return usuarioRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
+	public Usuario findById(UUID id) {
+		return usuarioRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+	}
+	
+	@Override
+	public Usuario findByCpf(String cpf) {
+		return usuarioRepository.findByCpf(cpf).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+	}
+
+	@Override
+	public Usuario findByCnpj(String cnpj) {
+		return usuarioRepository.findByCnpj(cnpj).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
 	}
 
 	@Override
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
-
 }

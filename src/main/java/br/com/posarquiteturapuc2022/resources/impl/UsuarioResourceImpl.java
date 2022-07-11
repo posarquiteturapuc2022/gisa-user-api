@@ -1,6 +1,7 @@
 package br.com.posarquiteturapuc2022.resources.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api/usuarios")
-public class UsuarioResourceImpl implements UsuarioResource{
+public class UsuarioResourceImpl implements UsuarioResource {
 
 	private final UsuarioService userService;
-	
+
 	@Override
-	public ResponseEntity<Usuario> findById(Long id) {
+	public ResponseEntity<Usuario> findById(UUID id) {
 		return ResponseEntity.ok().body(userService.findById(id));
 	}
 
@@ -28,4 +29,22 @@ public class UsuarioResourceImpl implements UsuarioResource{
 		return ResponseEntity.ok().body(userService.findAll());
 	}
 
+	@Override
+	public ResponseEntity<Usuario> findByCpf(String cpf) {
+		return ResponseEntity.ok().body(userService.findByCpf(cpf));
+	}
+	
+	@Override
+	public ResponseEntity<Usuario> findByCnpj(String cnpj) {
+		return ResponseEntity.ok().body(userService.findByCnpj(cnpj));
+	}
+
+	//Observação: todo o processo de integração entre as diferentes 
+	//tecnologias e aplicações existentes, deve prover transparência, 
+	//alta disponibilidade e robustez. Deve-se fazer uso de middlewares adequados, 
+	//tais como: Remote Procedure Call (RPC), 
+	//serviços de mensageria, web sockets, protocolos como HTTP, 
+	//TCP/IP, SOAP, Rest, GraphQL etc. 
+	//A escolha das tecnologias deve basear-se preferencialmente em produtos das empresas 
+	//Apache e Red Hat, que possuem expertise para este tipo de solução.
 }
