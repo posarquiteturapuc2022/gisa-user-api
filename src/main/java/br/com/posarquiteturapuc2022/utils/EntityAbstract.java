@@ -1,7 +1,7 @@
 package br.com.posarquiteturapuc2022.utils;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -9,6 +9,8 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @EntityListeners(EntityAbstractListeners.class)
 @MappedSuperclass
@@ -20,10 +22,13 @@ public abstract class EntityAbstract implements Serializable {
 	@GeneratedValue
 	@Column(name = "id", updatable = false)
 	private UUID id;
-	private UUID createdBy;
-	private UUID updateBy;
-	private Date createdAt;
-	private Date updateAt;
+	
+    @JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate createdAt;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate updateAt;
+    
 	private Boolean deteled = false;
 
 	protected EntityAbstract() {
@@ -34,11 +39,9 @@ public abstract class EntityAbstract implements Serializable {
 		this.id = id;
 	}
 
-	protected EntityAbstract(UUID id, UUID createdBy, UUID updateBy, Date createdAt, Date updateAt) {
+	protected EntityAbstract(UUID id, LocalDate createdAt, LocalDate updateAt) {
 		super();
 		this.id = id;
-		this.createdBy = createdBy;
-		this.updateBy = updateBy;
 		this.createdAt = createdAt;
 		this.updateAt = updateAt;
 	}
@@ -76,35 +79,20 @@ public abstract class EntityAbstract implements Serializable {
 		this.id = id;
 	}
 
-	public UUID getCreatedBy() {
-		return createdBy;
-	}
 
-	public void setCreatedBy(UUID createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public UUID getUpdateBy() {
-		return updateBy;
-	}
-
-	public void setUpdateBy(UUID updateBy) {
-		this.updateBy = updateBy;
-	}
-
-	public Date getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdateAt() {
+	public LocalDate getUpdateAt() {
 		return updateAt;
 	}
 
-	public void setUpdateAt(Date updateAt) {
+	public void setUpdateAt(LocalDate updateAt) {
 		this.updateAt = updateAt;
 	}
 

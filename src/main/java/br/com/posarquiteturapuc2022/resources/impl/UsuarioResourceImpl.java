@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +38,22 @@ public class UsuarioResourceImpl implements UsuarioResource {
 	@Override
 	public ResponseEntity<Usuario> findByCnpj(String cnpj) {
 		return ResponseEntity.ok().body(userService.findByCnpj(cnpj));
+	}
+
+	@Override
+	public ResponseEntity<Usuario> save(Usuario usuario) {
+		return ResponseEntity.ok().body(userService.save(usuario));
+	}
+
+	@Override
+	public ResponseEntity<Usuario> update(Usuario usuario) {
+		return ResponseEntity.ok().body(userService.update(usuario));
+	}
+
+	@Override
+	public ResponseEntity<Void> delete(@PathVariable UUID id) {
+		userService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 	//Observação: todo o processo de integração entre as diferentes 

@@ -17,9 +17,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID>{
 	@Transactional(readOnly = true)
 	@Query(value = "SELECT u FROM Usuario u WHERE u.cpf =:cpf")
 	public Optional<Usuario> findByCpf(@Param("cpf") String cpf);
-	
+
 	@Transactional(readOnly = true)
 	@Query(value = "SELECT u FROM Usuario u WHERE u.cnpj =:cnpj")
 	public Optional<Usuario> findByCnpj(@Param("cnpj") String cnpj);
+	
 	
 }

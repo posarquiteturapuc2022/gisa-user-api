@@ -1,10 +1,9 @@
 package br.com.posarquiteturapuc2022.domain;
 
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.persistence.AttributeOverride;
@@ -12,7 +11,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.posarquiteturapuc2022.utils.EntityAbstract;
 import lombok.AllArgsConstructor;
@@ -35,20 +37,32 @@ public class Usuario extends EntityAbstract implements Serializable, Comparable<
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
     private UUID id;
-    private String nome;
-    private String cpf;
-    private String cnpj;
+
+	private String nome;
     private String email;
-    private String password;
     
-	protected Usuario(UUID id, String cpf) {
-		super();
-		this.id = id;
-		this.cpf = cpf;
-	}
+	@Column(length = 20)
+	private String cnpj;
+	
+	@Column(length = 15)
+	private String cpf;
+	
+    private String numeroSUS;
+    private String cidade;
+    private String uf;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
+
+    private String password;
     
 	@Override
 	public int compareTo(Usuario o) {
 		return  o.getCreatedAt().compareTo(getCreatedAt());
+	}
+
+	@PrePersist
+	public void prepersist() {
+		this.setDataNascimento(LocalDate.now());
 	}
 }

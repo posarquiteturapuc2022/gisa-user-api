@@ -1,14 +1,16 @@
-create table gisauserapidb.usuario (
-    id_usuario uuid not null,
+CREATE TABLE gisauserapidb.usuario (
+    id_usuario uuid NOT NULL,
     created_at timestamp,
-    created_by uuid,
-    deteled boolean,
     update_at timestamp,
-    update_by uuid,
-    cnpj varchar(255),
-    cpf varchar(255),
-    email varchar(255),
+    deteled boolean,
     nome varchar(255),
+    email varchar(255),
+    cnpj varchar(20),
+    cpf varchar(15),
+    numero_sus varchar(255),
+    cidade varchar(255),
+    uf varchar(255),
+    data_nascimento timestamp,
     password varchar(255),
-    primary key (id_usuario)
+    PRIMARY KEY (id_usuario)
 );

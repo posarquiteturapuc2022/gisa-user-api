@@ -26,14 +26,30 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Usuario findByCpf(String cpf) {
 		return usuarioRepository.findByCpf(cpf).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
 	}
-
+	
 	@Override
 	public Usuario findByCnpj(String cnpj) {
-		return usuarioRepository.findByCnpj(cnpj).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+		return usuarioRepository.findByCnpj(cnpj).orElseThrow(() -> new ObjectNotFoundException("Prestador não encontrado!"));
 	}
 
 	@Override
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
+	}
+	
+	@Override
+	public Usuario save(Usuario usuario) {
+		return usuarioRepository.save(usuario);
+	}
+
+	@Override
+	public Usuario update(Usuario usuario) {
+		return usuarioRepository.saveAndFlush(usuario);
+	}
+
+	@Override
+	public void delete(UUID id) {
+		Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+		usuarioRepository.delete(usuario);
 	}
 }
