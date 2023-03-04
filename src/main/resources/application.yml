@@ -18,6 +18,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
   session:
     store-type: none
   flyway:
@@ -35,7 +36,7 @@ spring:
     allow-bean-definition-overriding: true
 server:
   port: 
-    ${PORT:44720}
+    0
   
 eureka:
   client:
