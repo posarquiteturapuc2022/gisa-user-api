@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS gisauserapidb AUTHORIZATION postgres;
+CREATE SCHEMA IF NOT EXISTS gisauserapidb AUTHORIZATION dbarlnsbijh178;
 
 DROP EXTENSION  IF EXISTS "uuid-ossp" ;
 CREATE EXTENSION "uuid-ossp";
