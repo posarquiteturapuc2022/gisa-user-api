@@ -6,10 +6,6 @@ spring:
     driverClassName: org.postgresql.Driver
     password: ${POSTGRES_PASSWORD}
     username: ${POSTGRES_USER:pszsndrgcaeeaw}
-    #url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/gisadb}
-    #driverClassName: org.postgresql.Driver
-    #password: ${POSTGRES_PASSWORD}
-    #username: ${POSTGRES_USER:postgres}
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
@@ -27,19 +23,11 @@ spring:
     schemas: gisauserapidb
     password: ${POSTGRES_PASSWORD}
     user: ${POSTGRES_USER:pszsndrgcaeeaw}
-    #url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/gisadb}
-    #schemas: gisauserapidb
-    #password: ${POSTGRES_PASSWORD}
-    #user: ${POSTGRES_USER:postgres}
     locations: classpath:db/migration
   main:
     allow-bean-definition-overriding: true
-server:
-  port: 
-    ${PORT}
   
 eureka:
   client:
     service-url:
       defaultZone:  ${EUREKA_URL:https://gisa-eureka-server.herokuapp.com:8761/eureka}
-      #defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
