@@ -32,4 +32,4 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone:  ${EUREKA_URL:https://gisa-eureka-server.herokuapp.com:8761/eureka}
+      defaultZone:  ${EUREKA_URL:https://gisa-eureka-server.herokuapp.com}
