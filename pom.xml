@@ -9,7 +9,6 @@
 		<version>2.6.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
 	<groupId>br.com.posarquiteturapuc2022</groupId>
 	<artifactId>gisa-user-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
