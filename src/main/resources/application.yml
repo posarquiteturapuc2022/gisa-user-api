@@ -26,7 +26,6 @@ spring:
     locations: classpath:db/migration
   main:
     allow-bean-definition-overriding: true
-    allow-bean-definition-overriding: true
 server:
   port: 
     ${PORT:8000}
