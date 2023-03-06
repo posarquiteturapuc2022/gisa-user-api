@@ -30,6 +30,7 @@ spring:
 server:
   port: 
     ${PORT:8000}
+    
 eureka:
   client:
     service-url:
