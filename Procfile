@@ -1,1 +1,1 @@
-web: java -Dspring.profiles.active=prod $JAVA_OPTS -Dserver.port=8000 -jar target/gisa-user-api*.jar --server.port=8000
+web: java -Dspring.profiles.active=prod $JAVA_OPTS -Dserver.port=$PORT -jar target/gisa-user-api*.jar --server.port=8000
