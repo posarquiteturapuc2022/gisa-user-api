@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.posarquiteturapuc2022.domain.Usuario;
 
 public interface UsuarioResource {
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	ResponseEntity<Usuario> findById(@RequestParam(value="id") UUID id);
+	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+	ResponseEntity<Usuario> findById(@PathVariable UUID id);
 
-	@RequestMapping(value = "/{cpf}", method = RequestMethod.GET)
-	ResponseEntity<Usuario> findByCpf(@RequestParam(value="cpf") String cpf);
+	@RequestMapping(value = "/cpf/{cpf}", method = RequestMethod.GET)
+	ResponseEntity<Usuario> findByCpf(@PathVariable String cpf);
 	
-	@RequestMapping(value = "/{cnpj}", method = RequestMethod.GET)
-	ResponseEntity<Usuario> findByCnpj(@RequestParam(value="cnpj")  String cnpj);
+	@RequestMapping(value = "/cnpj/{cnpj}", method = RequestMethod.GET)
+	ResponseEntity<Usuario> findByCnpj(@PathVariable  String cnpj);
 	
 	@RequestMapping(method = RequestMethod.GET)
 	ResponseEntity<List<Usuario>> findAll();
@@ -35,7 +34,6 @@ public interface UsuarioResource {
 	@PutMapping
 	ResponseEntity<Usuario> update(@RequestBody Usuario usuario);
 
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "/delete/{id}")
 	ResponseEntity<Void> delete(@PathVariable UUID id);
-	
 }

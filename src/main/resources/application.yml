@@ -1,10 +1,17 @@
 server:
   port: ${PORT:8000}
+  servlet:
+    context-path: /gisa-user-api
+
 spring:
   application:
     name: gisa-user-api
     version: v1
   datasource:
+    #url: ${POSTGRES_URL:jdbc:postgresql://ec2-54-157-79-121.compute-1.amazonaws.com:5432/dbarlnsbijh178}
+    #driverClassName: org.postgresql.Driver
+    #password: ${POSTGRES_PASSWORD}
+    #username: ${POSTGRES_USER:pszsndrgcaeeaw}
     url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/gisadb}
     driverClassName: org.postgresql.Driver
     password: ${POSTGRES_PASSWORD}
@@ -26,6 +33,10 @@ spring:
     store-type: none
   flyway:
     baselineOnMigrate : true 
+    #url: ${POSTGRES_URL:jdbc:postgresql://ec2-54-157-79-121.compute-1.amazonaws.com:5432/dbarlnsbijh178}
+    #schemas: gisauserapidb
+    #password: ${POSTGRES_PASSWORD}
+    #user: ${POSTGRES_USER:pszsndrgcaeeaw}
     url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/gisadb}
     schemas: gisauserapidb
     password: ${POSTGRES_PASSWORD}
@@ -33,8 +44,9 @@ spring:
     locations: classpath:db/migration
   main:
     allow-bean-definition-overriding: true
-
+  
 eureka:
   client:
     service-url:
+      #defaultZone:  ${EUREKA_URL:https://gisa-eureka-server.herokuapp.com:8761/eureka}
       defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

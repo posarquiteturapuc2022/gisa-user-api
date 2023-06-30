@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/api/usuarios")
+@RequestMapping(value = "/v1/api/usuarios")
 public class UsuarioResourceImpl implements UsuarioResource {
 
 	private final UsuarioService userService;

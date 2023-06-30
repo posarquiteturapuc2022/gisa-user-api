@@ -47,6 +47,14 @@ public class UsuarioAbstract  extends EntityAbstract implements Serializable{
 	public String getCpf() {
 		return cpf;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public void setPassword(String passaword) {
 		this.password = passaword;
