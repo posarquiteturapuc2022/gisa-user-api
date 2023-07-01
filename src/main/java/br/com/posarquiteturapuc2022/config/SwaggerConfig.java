@@ -15,15 +15,22 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
+	
 	@Bean
 	public Docket productApi() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("br.com.sistemamanutencao.emaintenance.controller"))
-				.build().apiInfo(metaData());
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("br.com.posarquiteturapuc2022.resources"))
+				.build()
+				.apiInfo(metaData());
 	}
 
 	private ApiInfo metaData() {
-		return new ApiInfoBuilder().title("Spring Boot REST API").description("Spring Boot REST API").version("1.0.0")
-				.license("Apache License Version 2.0").licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
+		return new ApiInfoBuilder()
+				.title("Spring Boot REST API")
+				.description("Spring Boot REST API")
+				.version("1.0.0")
+				.license("Apache License Version 2.0")
+				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
 				.build();
 	}
 
