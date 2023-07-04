@@ -10,8 +10,6 @@ import java.util.UUID;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,7 +19,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.posarquiteturapuc2022.domain.enums.NivelFormacao;
 import br.com.posarquiteturapuc2022.domain.enums.TipoUsuario;
@@ -54,10 +51,10 @@ public class Usuario extends EntityAbstract implements Serializable, Comparable<
 	private String nome;
     private String email;
     
-	@Column(length = 20)
+	@Column(unique = true, length = 20)
 	private String cnpj;
 	
-	@Column(length = 15)
+	@Column(unique = true, length = 15)
 	private String cpf;
 	
     private String numeroSUS;

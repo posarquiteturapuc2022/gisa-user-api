@@ -82,6 +82,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 			if (!usuario.getCpf().isEmpty()) {
 				if (!usuario.getCpf().isEmpty() && usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.ASSOCIADO.getCodigo())) {
 					this.usuarioRetorno.setCpf(usuario.getCpf());
+					this.usuarioRetorno.setCnpj(null);
 					this.usuarioRetorno.setNumeroSUS(usuario.getNumeroSUS());
 					this.usuarioRetorno.setSexo(usuario.getSexo());
 					this.usuarioRetorno.setEstadoCivil(usuario.getEstadoCivil());
@@ -98,6 +99,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 						&& (usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.CONVENIADO.getCodigo()) 
 								|| usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.PRESTADOR.getCodigo()))) {
 					this.usuarioRetorno.setCnpj(usuario.getCnpj());
+					this.usuarioRetorno.setCpf(null);
 				}else {
 					logger.info("O Tipo de Usuário informado não pode ser salvo como Prestador ou Conveniado!");
 					throw new TipoUsuarioException("O Tipo de Usuário não pode ser salvo como Prestador ou Conveniado!");
@@ -126,7 +128,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 		if (!usuario.getCpf().isEmpty() && usuario.getCnpj().isEmpty()) {
 			if (!usuario.getCpf().isEmpty() && usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.ASSOCIADO.getCodigo())) {
 				this.usuarioRetorno.setCpf(usuario.getCpf());
-				this.usuarioRetorno.setTipoUsuario(usuario.getTipoUsuario());
+				this.usuarioRetorno.setCnpj(null);
+				this.usuarioRetorno.setNumeroSUS(usuario.getNumeroSUS());
+				this.usuarioRetorno.setSexo(usuario.getSexo());
+				this.usuarioRetorno.setEstadoCivil(usuario.getEstadoCivil());
+				this.usuarioRetorno.setNivelFormacao(usuario.getNivelFormacao());
+				this.usuarioRetorno.setProfissao(usuario.getProfissao());
+				this.usuarioRetorno.setCreatedAt(usuario.getCreatedAt());
+				this.usuarioRetorno.setPassword(passwordEncoder.encode(usuario.getPassword()));
 			}else {
 				logger.info("O Tipo de Usuário informado esta divergente do Associado!");
 				throw new TipoUsuarioException("O Tipo de Usuário informado esta divergente do Associado!");
@@ -136,13 +145,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 					&& (usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.CONVENIADO.getCodigo()) 
 							|| usuario.getTipoUsuario().getCodigo().equals(TipoUsuario.PRESTADOR.getCodigo()))) {
 				this.usuarioRetorno.setCnpj(usuario.getCnpj());
-				this.usuarioRetorno.setTipoUsuario(usuario.getTipoUsuario());
+				this.usuarioRetorno.setCpf(null);
 			}else {
 				logger.info("O Tipo de Usuário informado esta divergente do Prestador ou Conveniado!");
 				throw new TipoUsuarioException("O Tipo de Usuário informado esta divergente do Prestador ou Conveniado!");
 			}
 		}
 		
+		this.usuarioRetorno.setTipoUsuario(usuario.getTipoUsuario());
 		this.usuarioRetorno.setNumeroSUS(usuario.getNumeroSUS());
 		this.usuarioRetorno.setSexo(usuario.getSexo());
 		this.usuarioRetorno.setCep(usuario.getCep());
